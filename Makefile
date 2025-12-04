@@ -1,29 +1,45 @@
-.PHONY: migrations migrate run clean install help
-
-# Variáveis
-PYTHON = python3
-MANAGE = $(PYTHON) manage.py
+.PHONY: help web-install api-install web-dev api-dev web-build api-build web-start api-start web-lint clean
 
 help:
 	@echo "Comandos disponíveis:"
-	@echo "  make migrations  - Criar novas migrações"
-	@echo "  make migrate    - Aplicar migrações no banco de dados"
-	@echo "  make run       - Rodar o servidor de desenvolvimento"
-	@echo "  make clean     - Limpar arquivos temporários (*.pyc, __pycache__)"
-	@echo "  make install   - Instalar dependências do requirements.txt"
+	@echo "  make web-install    - Instalar dependências do frontend (web)"
+	@echo "  make api-install    - Instalar dependências do backend (api)"
+	@echo "  make web-dev        - Rodar o frontend (Next.js) em desenvolvimento"
+	@echo "  make api-dev        - Rodar o backend (Node/Express) em desenvolvimento"
+	@echo "  make web-build      - Build do frontend"
+	@echo "  make api-build      - Build do backend"
+	@echo "  make web-start      - Start do frontend (produção)"
+	@echo "  make api-start      - Start do backend (produção)"
+	@echo "  make web-lint       - Lint do frontend"
+	@echo "  make clean          - Limpar artefatos (node_modules/.next/dist)"
 
-migrations:
-	$(MANAGE) makemigrations
+web-install:
+	cd web && yarn install
 
-migrate:
-	$(MANAGE) migrate
+api-install:
+	cd api && yarn install
 
-run:
-	$(MANAGE) runserver
+web-dev:
+	cd web && yarn dev
+
+api-dev:
+	cd api && yarn dev
+
+web-build:
+	cd web && yarn build
+
+api-build:
+	cd api && yarn build
+
+web-start:
+	cd web && yarn start
+
+api-start:
+	cd api && yarn start
+
+web-lint:
+	cd web && yarn lint
 
 clean:
-	find . -type d -name "__pycache__" -exec rm -rf {} +
-	find . -type f -name "*.pyc" -delete
-
-install:
-	pip install -r requirements.txt 
+	@echo "Limpando artefatos..."
+	@rm -rf web/node_modules web/.next api/node_modules api/dist
