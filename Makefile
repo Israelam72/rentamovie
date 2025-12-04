@@ -1,17 +1,17 @@
-.PHONY: help web-install api-install web-dev api-dev web-build api-build web-start api-start web-lint clean
+.PHONY: help web-install api-install web api web-build api-build web-start api-start web-lint clean
 
 help:
-	@echo "Comandos disponíveis:"
-	@echo "  make web-install    - Instalar dependências do frontend (web)"
-	@echo "  make api-install    - Instalar dependências do backend (api)"
-	@echo "  make web-dev        - Rodar o frontend (Next.js) em desenvolvimento"
-	@echo "  make api-dev        - Rodar o backend (Node/Express) em desenvolvimento"
-	@echo "  make web-build      - Build do frontend"
-	@echo "  make api-build      - Build do backend"
-	@echo "  make web-start      - Start do frontend (produção)"
-	@echo "  make api-start      - Start do backend (produção)"
-	@echo "  make web-lint       - Lint do frontend"
-	@echo "  make clean          - Limpar artefatos (node_modules/.next/dist)"
+	@echo "Available commands:"
+	@echo "  make web-install    - Install frontend (web) dependencies"
+	@echo "  make api-install    - Install backend (api) dependencies"
+	@echo "  make web            - Run frontend (Next.js) in development"
+	@echo "  make api            - Run backend (Node/Express) in development"
+	@echo "  make web-build      - Build frontend"
+	@echo "  make api-build      - Build backend"
+	@echo "  make web-start      - Start frontend (production)"
+	@echo "  make api-start      - Start backend (production)"
+	@echo "  make web-lint       - Lint frontend"
+	@echo "  make clean          - Clean artifacts (node_modules/.next/dist)"
 
 web-install:
 	cd web && yarn install
@@ -19,10 +19,10 @@ web-install:
 api-install:
 	cd api && yarn install
 
-web-dev:
+web:
 	cd web && yarn dev
 
-api-dev:
+api:
 	cd api && yarn dev
 
 web-build:
@@ -41,5 +41,5 @@ web-lint:
 	cd web && yarn lint
 
 clean:
-	@echo "Limpando artefatos..."
+	@echo "Cleaning artifacts..."
 	@rm -rf web/node_modules web/.next api/node_modules api/dist
