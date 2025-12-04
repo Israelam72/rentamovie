@@ -42,3 +42,7 @@ pnpm-debug.log*
 **/*.pyc
 movie-rental-backend-old/venv
 *.sqlite3
+
+# Cursor
+.cursor
+.cursor/
