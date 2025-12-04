@@ -1,0 +1,6 @@
+---
+description: yarn instead of npm
+globs: 
+alwaysApply: false
+---
+when running the cursor terminal, use yarn instead of npm for the frontend project
